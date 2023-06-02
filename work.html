@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+	<title>TaskHive | Register</title>
+	<link rel="stylesheet" type="text/css" href="work.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="wrap">
+		<header>
+			<a href="#" class="logo"><img src="TaskHive-removebg-preview.png"/></a>
+		
+			<ul class="navbar">
+				<li><a href="homepage.html" class="active">Home</a></li>
+				<li><a href="Correct About Us.html">About Us</a></li>
+				<li><a href="ProfileCard.html">Services</a></li>
+			</ul>
+		
+			<div class="main">
+				<a href="work.html" class="user"><i class="ri-user-fill"></i>Register</a>
+				<div class="bx bx-menu" id="menu-icon"></div>
+			</div>
+		</header>
+
+		<div class="registerform">
+			<form onsubmit="generateUsername(event)" class="form" id= "myForm">
+				<h1 class="title">Register</h1>
+
+				<div class="inputContainer">
+					<input type="text" class="input" id="first" placeholder="a">
+					<label for="" class="label">First Name</label>
+				</div>
+
+				<div class="inputContainer">
+					<input type="text" class="input" id="last" placeholder="a">
+					<label for="" class="label">Last Name</label>
+				  </div>
+
+				  <div class="inputContainer">
+					<input type="text" class="input" placeholder="a">
+					<label for="" class="label">Birth Month</label>
+				  </div>
+
+				  <div class="inputContainer">
+					<select id="gender">
+						<option value="gender"></option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+					<label for="gender" class="label">Gender</label>
+				</div>
+
+				<div class="inputContainer">
+					<input type="email" class="input" placeholder="a">
+					<label for="" class="label">Email</label>
+				</div>
+			
+				  <div class="inputContainer">
+					<input type="text" class="input" placeholder="a">
+					<label for="" class="label">Password</label>
+				  </div>
+			
+				  <div class="inputContainer">
+					<input type="text" class="input" placeholder="a">
+					<label for="" class="label">Confirm Password</label>
+				  </div>
+				  
+				  <div class="inputContainer">
+					<input type="text" class="description" placeholder="Describe yourself...">
+					<label for="" class="label">Description</label>
+				  </div>
+
+				  <button type="submit" class="submitBtn"> Submit</button>
+
+				  <div class="inputContainer">
+					<output type="text" class="input" id="result" placeholder="a" readonly>
+					<label for="" class="label">Username</label>
+				  </div>
+			</form>
+			<div id="result"></div>
+			<script type="text/javascript">
+				var userLog = [];
+				function generateUsername(event)
+				{ event.preventDefault();
+					var first= document.getElementById("first").value;
+					var last= document.getElementById("last").value;
+					var username= first+"."+last;
+					let current = new Date();
+					let cDate = ('Day: ' + current.getDate()) + '   ' + ('Month: ' + (current.getMonth() + 1)) + '   ' + ('Year: ' + current.getFullYear());
+					let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+					/* let dateTime = cDate + ' ' + cTime; */
+					
+					var confirmation= confirm("Please confirm your username: " + username);
+					if(confirmation)
+					{
+						document.getElementById("result").innerHTML = "Username: " + username;
+						userLog.push('Username: ' + username);
+						userLog.push('Time of Registration: ' + cTime);
+						userLog.push('Date of Registration: ' + cDate);
+						document.getElementById('myForm').reset();
+					}					
+					else
+					{document.getElementById("result").innerHTML = "Username generation canceled.";}					
+				}
+				
+				function printUserLog() 
+				{
+      				// Generate the alert message based on the array
+      					var alertMessage = 'User Log:\n\n';
+
+      				// Loop through the array elements and add them to the alert message
+      				for (var i = 0; i < userLog.length; i++) 
+					{
+        				alertMessage += '- ' + userLog[i] + '\n';
+      				}
+
+      				// Display the alert
+      				alert(alertMessage);
+    			}
+
+			</script>
+
+			<a href="#" class="pic"><img src="19-removebg-preview.png"/></a>
+
+		</div>
+	</div>				
+	<footer>
+        <div class="col1">
+          <h3>USEFUL LINKS</h3>
+          <a href="homepage.html" class="active">Home</a>
+          <a href="Correct About Us.html">About Us</a>
+          <a href="ProfileCard.html">Services</a>
+        </div>
+      
+        <div class="col2">
+          <h3>REGISTER HERE</h3>
+          <form>
+            <input type="email" placeholder="Your Email Address" class="footerplaceholder">
+            <br>
+            <button type="submit">REGISTER NOW</button>
+			<br><br>
+			<button onclick="printUserLog()">USER LOG</button>
+          </form>
+		  
+        </div>
+        <div class="col3">
+          <h3>CONTACT</h3>
+          <p>432, Silicon Valley Street, CSK 3<br>San Francisco, Northern California, USA</p>
+        </div>
+      </footer>
+  </div>
+
+</body>
+</html>
